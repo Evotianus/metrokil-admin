@@ -30,7 +30,7 @@
                 <span class="menu-header-text">Operasional</span>
             </li>
 
-            <li class="menu-item {{ request()->is('blogs') ? 'open' : '' }}">
+            <li class="menu-item {{ request()->is('blogs*') ? 'open' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-layout"></i>
                     <div data-i18n="Kelola Pengguna">Blog</div>

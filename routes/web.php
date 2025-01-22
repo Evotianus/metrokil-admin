@@ -30,9 +30,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
             Route::resource('/', \App\Http\Controllers\UserController::class);
         });
 
-        Route::group(['prefix' => 'blogs',  'as' => 'blogs.'], function () {
-            Route::resource('/', \App\Http\Controllers\BlogController::class);
-        });
+        // Route::group(['prefix' => 'blogs',  'as' => 'blogs.'], function () {
+        //     Route::resource('/', \App\Http\Controllers\BlogController::class);
+        // });
+        Route::resource('blogs', \App\Http\Controllers\BlogController::class);
     });
 });
 

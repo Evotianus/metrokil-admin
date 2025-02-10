@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         //     Route::resource('/', \App\Http\Controllers\BlogController::class);
         // });
         Route::resource('blogs', \App\Http\Controllers\BlogController::class);
+        Route::resource('galleries',\App\Http\Controllers\GalleryController::class);
     });
 });
 

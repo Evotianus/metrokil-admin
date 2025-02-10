@@ -32,7 +32,7 @@
 
             <li class="menu-item {{ request()->is('blogs*') ? 'open' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <i class="menu-icon tf-icons bx bx-news"></i>
                     <div data-i18n="Kelola Pengguna">Blog</div>
                 </a>
 
@@ -50,13 +50,53 @@
                 </ul>
             </li>
 
+            <li class="menu-item {{ request()->is('galleries*') ? 'open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-film"></i>
+                    <div data-i18n="Kelola Pengguna">Gallery</div>
+                </a>
+
+                <ul class="menu-sub">
+                    <li class="menu-item {{ request()->is('galleries') ? 'active' : '' }}">
+                        <a href="{{ route('galleries.index') }}" class="menu-link">
+                            <div data-i18n="Pengguna">Daftar Gallery</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ request()->is('galleries/create') ? 'active' : '' }}">
+                        <a href="{{ route('galleries.create') }}" class="menu-link">
+                            <div data-i18n="Pengguna">Tambah Gallery</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item {{ request()->is('blogs*') ? 'open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-briefcase-alt"></i>
+                    <div data-i18n="Kelola Pengguna">Services</div>
+                </a>
+
+                <ul class="menu-sub">
+                    <li class="menu-item {{ request()->is('blogs') ? 'active' : '' }}">
+                        <a href="{{ route('blogs.index') }}" class="menu-link">
+                            <div data-i18n="Pengguna">Daftar Services</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ request()->is('blogs/create') ? 'active' : '' }}">
+                        <a href="{{ route('blogs.create') }}" class="menu-link">
+                            <div data-i18n="Pengguna">Tambah Services</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">System Management</span>
             </li>
 
             <li class="menu-item {{ request()->is('users') ? 'open' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <i class="menu-icon tf-icons bx bx-cog"></i>
                     <div data-i18n="Pengaturan Sistem">Pengaturan Sistem</div>
                 </a>
 

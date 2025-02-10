@@ -1,23 +1,23 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar Blog')
+@section('title', 'Daftar Gallery')
 
 @section('content')
     <div class="container-xxl container-p-y">
         <div class="p-4 card bg-white blogs-table">
-            <h2 class="text-lg">Blogs</h2>
+            <h2 class="text-lg">Galleries</h2>
             <hr class="my-4">
             <div class="flex justify-between">
-                <form action="{{ route('blogs.index') }}" method="GET" class="flex">
+                <form action="{{ route('galleries.index') }}" method="GET" class="flex">
                     <input type="text" name="search" value="{{ request('search') }}"
                         class="w-72 rounded-md placeholder:opacity-60 border-slate-300 focus:border-primary"
-                        placeholder="Cari blog..." onkeypress="return event.keyCode !== 13 || this.form.submit()">
+                        placeholder="Cari foto..." onkeypress="return event.keyCode !== 13 || this.form.submit()">
                 </form>
-                <a href="{{ route('blogs.create') }}">
+                <a href="{{ route('galleries.create') }}">
                     <x-primary-button>
                         <img src="{{ asset('assets/boxicons-2.1.4/svg/regular/bx-plus-white.svg') }}" class="mr-3"
                             width="20" alt="">
-                        Tambah Blog
+                        Tambah Foto
                     </x-primary-button>
                 </a>
             </div>
@@ -29,33 +29,26 @@
                             <th>Judul</th>
                             <th>Deskripsi</th>
                             <th>Kategori</th>
-                            <th>Pembuat</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @foreach ($blogs as $blog)
+                        @foreach ($galleries as $gallery)
                             <tr>
-                                <td><strong>{{ \Str::limit($blog->title, 30) }}</strong></td>
-                                <td>{{ \Str::limit(strip_tags($blog->description), 40) }}</td>
+                                <td><strong>{{ substr($gallery->name, 0, 30) }}</strong></td>
+                                <td>{{ substr(strip_tags($gallery->description), 0, 60) }}</td>
                                 <td>
-                                    @if ($blog->category == 'news')
-                                        <span class="badge bg-label-primary me-1">Berita</span>
-                                    @else
-                                        <span class="badge bg-label-warning me-1">Informasi</span>
-                                    @endif
-                                </td>
-                                <td>{{ $blog->user->name }}
-                                </td>
+                                        <span class="badge bg-label-primary me-1">{{  \Str::limit($gallery->category, 20) }}</span>
+                                </td>   
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                             data-bs-toggle="dropdown"><i class="bx bx-dots-vertical-rounded"></i></button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{ route('blogs.edit', $blog->id) }}"><i
+                                            <a class="dropdown-item" href="{{ route('galleries.edit', $gallery->id) }}"><i
                                                     class="bx bx-edit-alt me-1"></i> Edit</a>
 
-                                            <form action="{{ route('blogs.destroy', $blog->id) }}" method="POST"
+                                            <form action="{{ route('galleries.destroy', $gallery->id) }}" method="POST"
                                                 class="dropdown-item">
                                                 @csrf
                                                 @method('DELETE')

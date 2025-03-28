@@ -70,20 +70,20 @@
                 </ul>
             </li>
 
-            <li class="menu-item {{ request()->is('blogs*') ? 'open' : '' }}">
+            <li class="menu-item {{ request()->is('services*') ? 'open' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-briefcase-alt"></i>
                     <div data-i18n="Kelola Pengguna">Services</div>
                 </a>
 
                 <ul class="menu-sub">
-                    <li class="menu-item {{ request()->is('blogs') ? 'active' : '' }}">
-                        <a href="{{ route('blogs.index') }}" class="menu-link">
+                    <li class="menu-item {{ request()->is('services') ? 'active' : '' }}">
+                        <a href="{{ route('services.index') }}" class="menu-link">
                             <div data-i18n="Pengguna">Daftar Services</div>
                         </a>
                     </li>
-                    <li class="menu-item {{ request()->is('blogs/create') ? 'active' : '' }}">
-                        <a href="{{ route('blogs.create') }}" class="menu-link">
+                    <li class="menu-item {{ request()->is('services/create') ? 'active' : '' }}">
+                        <a href="{{ route('services.create') }}" class="menu-link">
                             <div data-i18n="Pengguna">Tambah Services</div>
                         </a>
                     </li>

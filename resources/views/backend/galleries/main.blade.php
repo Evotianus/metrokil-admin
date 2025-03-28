@@ -27,6 +27,7 @@
                     <thead>
                         <tr>
                             <th>Judul</th>
+                            <th>Image</th>
                             <th>Deskripsi</th>
                             <th>Kategori</th>
                             <th>Actions</th>
@@ -35,7 +36,8 @@
                     <tbody class="table-border-bottom-0">
                         @foreach ($galleries as $gallery)
                             <tr>
-                                <td><strong>{{ substr($gallery->name, 0, 30) }}</strong></td>
+                                <td><strong>{{ \Str::limit($gallery->name, 15) ?? 'None' }}</strong></td>
+                                <td><img src="http://localhost:8000/storage/{{ $gallery->image_url }}" alt="" class="w-48"></td>
                                 <td>{{ substr(strip_tags($gallery->description), 0, 60) }}</td>
                                 <td>
                                         <span class="badge bg-label-primary me-1">{{  \Str::limit($gallery->category, 20) }}</span>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use Dotenv\Util\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -18,9 +19,39 @@ class ServiceController extends Controller
         
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        DB::beginTransaction();
 
+        try {
+            $validated = $request->validate([
+                'name'       => 'required|string|max:255',
+                'price' => 'required|string',
+                'benefits'    => 'required|string',
+                'description'       => 'required|string',
+            ]);
+
+            Service ::create([
+                'name'       => $validated['name'],
+                'price'    => $validated['price'],
+                'benefits' => $validated['benefits'],
+                'description'  => $validated['description'],
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('services.index')->with('success', 'Service created successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+            Log::error('Error creating service: ' . $e->getMessage(), [
+                'trace' => $e->getTrace(),
+            ]);
+
+            return redirect()->back()
+                ->with('error', 'An error occurred while creating the Service. Please try again later.')
+                ->withInput();
+        }
     }
 
     public function create()
@@ -28,9 +59,44 @@ class ServiceController extends Controller
         return view('backend.services.create');
     }
 
-    public function update()
+    public function update(Request $request, string $id)
     {
+        DB::beginTransaction();
 
+        try {
+            // Find the existing blog post
+            $service = Service::findOrFail($id);
+
+            // Validate input
+            $validated = $request->validate([
+                'name'       => 'string|max:255',
+                'price' => 'required|string',
+                'benefits'    => 'required|string',
+                'description'       => 'required|string', // Image is optional during update
+            ]);
+
+            // Update the blog post
+            $service->update([
+                'name'       => $validated['name'],
+                'price'    => $validated['price'],
+                'benefits' => $validated['benefits'],
+                'description' => $validated['description'],
+            ]);
+
+            DB::commit();
+
+            return redirect()->route('services.index')->with('success', 'Service updated successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
+
+                Log::error('Error updating Service: ' . $e->getMessage(), [
+                'trace' => $e->getTrace(),
+            ]);
+
+            return redirect()->back()
+                ->with('error', 'An error occurred while updating the Service. Please try again later.')
+                ->withInput();  
+        }
     }
 
     public function edit(string $id)
@@ -52,7 +118,7 @@ class ServiceController extends Controller
 
                 DB::commit();
 
-                return redirect()->route('services.index')->with('success', 'Layanan deleted successfully');
+                return redirect()->route('services.index')->with('success', 'Service deleted successfully');
             } catch (\Exception $e) {
                 DB::rollBack();
 
@@ -61,7 +127,7 @@ class ServiceController extends Controller
                 ]);
 
                 return redirect()->back()
-                    ->with('error', 'An error occurred while deleting the Layanan. Please try again later.');
+                    ->with('error', 'An error occurred while deleting the Service. Please try again later.');
         }
     }
 

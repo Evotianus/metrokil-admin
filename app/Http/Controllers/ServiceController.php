@@ -39,7 +39,6 @@ class ServiceController extends Controller
             ]);
 
             DB::commit();
-
             return redirect()->route('services.index')->with('success', 'Service created successfully');
         } catch (\Exception $e) {
             DB::rollBack();

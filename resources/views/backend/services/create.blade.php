@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('title', 'Tambah Layanan')
-<link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet'
-        type='text/css' />
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_        editor.pkgd.min.js'>
-</script>
 @section('content')
     <div class="container-xxl container-p-y">
 
@@ -50,16 +46,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex flex-col gap-2 mt-3">
-                    <label for="description">Deskripsi</label>
-                    <div id="froala"></div>
+                <div class="col-span-6">
+                    <div class="flex flex-col gap-2">
+                        <label for="title">Description</label>
+                        <input type="text" name="description" id="description"
+                            class="input-text border-slate-400 rounded-md placeholder:opacity-60 focus:ring-primary"
+                            placeholder="Deskripsi Layanan...">
+                    </div>
                 </div>
             </form>
         </div>
     </div>
     <script>
         // Initialize Froala editor
-        var editor = new FroalaEditor('#froala');
         let btnSubmit = document.querySelector('#btn-submit');
         let blogForm = document.querySelector('#blog-form');
 
@@ -90,17 +89,16 @@
             e.preventDefault(); // Prevent default button behavior
 
             // Validate fields
-            if (!blogForm.title.value || !blogForm.category.value || !blogForm.image.value || !editor.html.get()) {
+            if (!blogForm.name.value || !blogForm.price.value || !blogForm.benefits.value) {
                 alert('Please fill all the fields');
                 return;
             }
 
-            // Set Froala content to a hidden input
-            const descriptionInput = document.createElement('input');
-            descriptionInput.type = 'hidden';
-            descriptionInput.name = 'description';
-            descriptionInput.value = editor.html.get();
-            blogForm.appendChild(descriptionInput);
+            // // Set Froala content to a hidden input
+            // const descriptionInput = document.createElement('input');
+            // descriptionInput.type = 'hidden';
+            // descriptionInput.name = 'description';
+            // blogForm.appendChild(descriptionInput);
 
             // Submit the form
             blogForm.submit();

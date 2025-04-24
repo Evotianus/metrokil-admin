@@ -21,6 +21,8 @@ class ServiceController extends Controller
 
     public function store(Request $request)
     {
+
+        // dd("anjenk");
         DB::beginTransaction();
 
         try {
@@ -30,13 +32,17 @@ class ServiceController extends Controller
                 'benefits'    => 'required|string',
                 'description'       => 'required|string',
             ]);
+            
+            // dd("Cao ni ma");
 
-            Service ::create([
-                'name'       => $validated['name'],
+            Service::create([
+                'name' => $validated['name'],
                 'price'    => $validated['price'],
                 'benefits' => $validated['benefits'],
                 'description'  => $validated['description'],
             ]);
+
+            // dd("Ni hao");
 
             DB::commit();
             return redirect()->route('services.index')->with('success', 'Service created successfully');

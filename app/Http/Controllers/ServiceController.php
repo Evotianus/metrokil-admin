@@ -14,9 +14,8 @@ class ServiceController extends Controller
     {
         $query = Service::query();
         $services = $query->orderBy('created_at', 'asc')->get();
-        
+
         return view('backend.services.main', compact('services'));
-        
     }
 
     public function store(Request $request)
@@ -28,21 +27,17 @@ class ServiceController extends Controller
         try {
             $validated = $request->validate([
                 'name'       => 'required|string|max:255',
-                'price' => 'required|string',
-                'benefits'    => 'required|string',
+                'price' => 'required|integer',
+                'benefits'    => 'required|array',
                 'description'       => 'required|string',
             ]);
-            
-            // dd("Cao ni ma");
 
             Service::create([
                 'name' => $validated['name'],
                 'price'    => $validated['price'],
-                'benefits' => $validated['benefits'],
+                'benefits' => json_encode($validated['benefits']),
                 'description'  => $validated['description'],
             ]);
-
-            // dd("Ni hao");
 
             DB::commit();
             return redirect()->route('services.index')->with('success', 'Service created successfully');
@@ -94,13 +89,13 @@ class ServiceController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
 
-                Log::error('Error updating Service: ' . $e->getMessage(), [
+            Log::error('Error updating Service: ' . $e->getMessage(), [
                 'trace' => $e->getTrace(),
             ]);
 
             return redirect()->back()
                 ->with('error', 'An error occurred while updating the Service. Please try again later.')
-                ->withInput();  
+                ->withInput();
         }
     }
 
@@ -115,25 +110,23 @@ class ServiceController extends Controller
     {
         DB::beginTransaction();
 
-        try
-         {
-                $service = Service::findOrFail($id);
+        try {
+            $service = Service::findOrFail($id);
 
-                $service->delete();
+            $service->delete();
 
-                DB::commit();
+            DB::commit();
 
-                return redirect()->route('services.index')->with('success', 'Service deleted successfully');
-            } catch (\Exception $e) {
-                DB::rollBack();
+            return redirect()->route('services.index')->with('success', 'Service deleted successfully');
+        } catch (\Exception $e) {
+            DB::rollBack();
 
-                Log::error('Error deleting Layanan: ' . $e->getMessage(), [
-                    'trace' => $e->getTrace(),
-                ]);
+            Log::error('Error deleting Layanan: ' . $e->getMessage(), [
+                'trace' => $e->getTrace(),
+            ]);
 
-                return redirect()->back()
-                    ->with('error', 'An error occurred while deleting the Service. Please try again later.');
+            return redirect()->back()
+                ->with('error', 'An error occurred while deleting the Service. Please try again later.');
         }
     }
-
 }

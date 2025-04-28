@@ -32,17 +32,23 @@
                     <div class="col-span-2">
                         <div class="flex flex-col gap-2">
                             <label for="title">Harga layanan per meter (Rp)</label>
-                            <input type="text" name="price" id="nama"
+                            <input type="number" name="price" id="nama"
                                 class="input-text border-slate-400 rounded-md placeholder:opacity-60 focus:ring-primary"
                                 placeholder="Harga Layanan...">
                         </div>
                     </div>
                     <div class="col-span-6">
                         <div class="flex flex-col gap-2">
-                            <label for="title">Benefits</label>
-                            <input type="text" name="benefits" id="benefits"
-                                class="input-text border-slate-400 rounded-md placeholder:opacity-60 focus:ring-primary"
-                                placeholder="Benefit Layanan...">
+                            <label for="benefits">Benefits</label>
+                            <div id="benefits-container">
+                                <div class="benefit-input-group flex items-center gap-2 mb-2">
+                                    <input type="text" name="benefits[]"
+                                        class="benefit-input input-text border-slate-400 rounded-md placeholder:opacity-60 focus:ring-primary w-full"
+                                        placeholder="Benefit Layanan...">
+                                    <button type="button"
+                                        class="add-benefit-btn bg-green-500 text-white px-3 py-1 rounded">+</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,6 +67,30 @@
         // Initialize Froala editor
         let btnSubmit = document.querySelector('#btn-submit');
         let blogForm = document.querySelector('#blog-form');
+        let benefitsContainer = document.querySelector('#benefits-container');
+
+        // Add event listener to the initial "+" button
+        document.querySelector('.add-benefit-btn').addEventListener('click', addBenefitField);
+
+        // Function to add a new benefit field
+        function addBenefitField() {
+            const newGroup = document.createElement('div');
+            newGroup.className = 'benefit-input-group flex items-center gap-2 mb-2';
+
+            newGroup.innerHTML = `
+                <input type="text" name="benefits[]"
+                    class="benefit-input input-text border-slate-400 rounded-md placeholder:opacity-60 focus:ring-primary w-full"
+                    placeholder="Benefit Layanan...">
+                <button type="button" class="remove-benefit-btn bg-red-500 text-white px-3 py-1 rounded">-</button>
+            `;
+
+            benefitsContainer.appendChild(newGroup);
+
+            // Add event listener to the new remove button
+            newGroup.querySelector('.remove-benefit-btn').addEventListener('click', function() {
+                benefitsContainer.removeChild(newGroup);
+            });
+        }
 
         // Preview image function
         function previewImage(event) {
@@ -88,17 +118,22 @@
         btnSubmit.addEventListener('click', (e) => {
             e.preventDefault(); // Prevent default button behavior
 
+            // Get all benefit inputs
+            const benefitInputs = document.querySelectorAll('.benefit-input');
+
+            // Check if at least one benefit is filled
+            let hasBenefit = false;
+            benefitInputs.forEach(input => {
+                if (input.value.trim() !== '') {
+                    hasBenefit = true;
+                }
+            });
+
             // Validate fields
-            if (!blogForm.name.value || !blogForm.price.value || !blogForm.benefits.value) {
-                alert('Please fill all the fields');
+            if (!blogForm.name.value || !blogForm.price.value || !hasBenefit) {
+                alert('Please fill all the required fields');
                 return;
             }
-
-            // // Set Froala content to a hidden input
-            // const descriptionInput = document.createElement('input');
-            // descriptionInput.type = 'hidden';
-            // descriptionInput.name = 'description';
-            // blogForm.appendChild(descriptionInput);
 
             // Submit the form
             blogForm.submit();

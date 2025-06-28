@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Landing Page
+Route::get('/', [AuthenticatedSessionController::class, 'create'])
+        ->name('/');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
 

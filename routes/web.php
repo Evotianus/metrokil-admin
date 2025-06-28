@@ -15,9 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Landing Page
-Route::get('/', function () {
-    return view('frontend.welcome');
-})->name('/');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
 

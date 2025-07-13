@@ -103,7 +103,7 @@
     {{-- Main JS --}}
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
-    {{-- Page JS --}}
+    {{-- Page JS --}}Add commentMore actions
     @stack('js')
 
     <!-- Place this tag in your head or just before your close body tag. -->

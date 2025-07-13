@@ -16,7 +16,7 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="py-1 menu-inner">
-
+ 
         {{-- Admin --}}
         <li class="menu-item {{ request()->is('home') ? 'active' : '' }}">
             <a href="{{ route('home.index') }}" class="menu-link">

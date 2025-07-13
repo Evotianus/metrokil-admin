@@ -14,7 +14,7 @@
                         </div>
                         <h2 class="text-2xl text-black font-semibold">5</h2>
                     </div>
-                    <p class="mt-2">Total Blog</p>
+                    <p class="mt-2">Total Blogs</p>
                 </div>
             </div>
             <div class="card bg-white border-b-warning border-b-2">
@@ -26,7 +26,7 @@
                         </div>
                         <h2 class="text-2xl text-black font-semibold">5</h2>
                     </div>
-                    <p class="mt-2">Total Testimonial</p>
+                    <p class="mt-2">Total Testimonials</p>
                 </div>
             </div>
             <div class="card bg-white border-b-danger border-b-2">

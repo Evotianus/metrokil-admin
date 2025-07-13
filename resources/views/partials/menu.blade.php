@@ -91,7 +91,7 @@
             </li>
 
             <li class="menu-header small text-uppercase">
-                <span class="menu-header-text">System Management</span>
+                <span class="menu-header-text">Manajemen Sistem</span>
             </li>
 
             <li class="menu-item {{ request()->is('users') ? 'open' : '' }}">

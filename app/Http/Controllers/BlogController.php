@@ -52,7 +52,7 @@ class BlogController extends Controller
                 'title'       => 'required|string|max:255',
                 'description' => 'required|string',
                 'category'    => 'required|string|in:news,information',
-                'image'       => 'required|file|max:2048',
+                'image'       => 'required|file',
             ]);
 
             $filePath = null;

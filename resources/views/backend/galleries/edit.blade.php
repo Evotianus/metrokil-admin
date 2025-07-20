@@ -13,7 +13,7 @@
             </div>
             <div class="flex gap-3 h-fit">
                 <a href="{{ route('galleries.index') }}" class="btn bg-primary-subtle text-primary">Batal</a>
-                <x-primary-button id="btn-update">Simpan Perubahan</x-primary-button>
+                <x-primary-button id="btn-update" onclick="this.disabled = true; this.form.submit();">Simpan Perubahan</x-primary-button>
             </div>
         </div>
 

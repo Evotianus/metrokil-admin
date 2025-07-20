@@ -37,7 +37,7 @@
                         @foreach ($galleries as $gallery)
                             <tr>
                                 <td><strong>{{ \Str::limit($gallery->name, 15) ?? 'None' }}</strong></td>
-                                <td><img src="http://localhost:8000/storage/{{ $gallery->image_url }}" alt="" class="w-48"></td>
+                                <td><img src="http://localhost:8080/storage/{{ $gallery->image_url }}" alt="" class="w-48"></td>
                                 <td>{{ substr(strip_tags($gallery->description), 0, 60) }}</td>
                                 <td>
                                         <span class="badge bg-label-primary me-1">{{  \Str::limit($gallery->category, 20) }}</span>
@@ -54,7 +54,7 @@
                                                 class="dropdown-item">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit">
+                                                <button type="submit" onclick="this.disabled = true; this.form.submit();">
                                                     <i class="bx bx-trash me-1"></i>
                                                     Delete
                                                 </button>

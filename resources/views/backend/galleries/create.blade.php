@@ -15,7 +15,7 @@
             </div>
             <div class="flex gap-3 h-fit">
                 <a href="{{ route('galleries.index') }}" class="btn bg-primary-subtle text-primary">Batal</a>
-                <x-primary-button id="btn-submit">Tambah Foto</x-primary-button>
+                <x-primary-button id="btn-submit" onclick="this.disabled = true; this.form.submit();">Tambah Foto</x-primary-button>
             </div>
         </div>
 

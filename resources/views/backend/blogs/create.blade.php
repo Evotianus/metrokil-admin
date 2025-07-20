@@ -17,7 +17,7 @@
             </div>
             <div class="flex gap-3 h-fit">
                 <a href="{{ route('blogs.index') }}" class="btn bg-primary-subtle text-primary">Batal</a>
-                <x-primary-button id="btn-submit">Tambah Blog</x-primary-button>
+                <x-primary-button id="btn-submit" onclick="this.disabled = true; this.form.submit();">Tambah Blog</x-primary-button>
             </div>
         </div>
 
@@ -107,7 +107,7 @@
 
         // Handle form submission
         btnSubmit.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent default button behavior
+            e.preventDefault();
 
             // Validate fields
             if (!blogForm.title.value || !blogForm.category.value || !blogForm.image.value || !editor.html.get()) {

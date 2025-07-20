@@ -36,34 +36,33 @@ class GalleryController extends Controller
                 'name'       => 'required|string|max:255',
                 'description' => 'required|string',
                 'category'    => 'required|string|in:Penyuntikan Anti Rayap Kusen Jendela,Penyuntikan Anti Rayap Kusen Pintu,Penyuntikan Anti Rayap Dinding Keramik Kamar Mandi,Penyuntikan Anti Rayap Lantai Dasar',
-                'image'       => 'required|file|max:2048',
+                'image'       => 'required|file', // Ensure image is required and of valid type
             ]);
-
             $filePath = null;
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
                 $filePath = $file->store('galleries', 'public');
             }
-
-            Gallery ::create([
+            echo "yes";
+            Gallery::create([
                 'name'       => $validated['name'],
                 'category'    => $validated['category'],
                 'description' => $validated['description'],
                 'image_url'  => $filePath,
             ]);
-
             DB::commit();
 
             return redirect()->route('galleries.index')->with('success', 'Gallery created successfully');
+            
         } catch (\Exception $e) {
             DB::rollBack();
 
             Log::error('Error creating blog: ' . $e->getMessage(), [
                 'trace' => $e->getTrace(),
             ]);
-
+            
             return redirect()->back()
-                ->with('error', 'An error occurred while creating the Gallery. Please try again later.')
+                ->with('error', $e->getMessage())
                 ->withInput();
         }
     }

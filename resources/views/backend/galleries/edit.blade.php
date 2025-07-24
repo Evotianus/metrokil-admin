@@ -18,8 +18,8 @@
         </div>
 
         <div class="card bg-white py-4 px-7">
-            <h2 class="text-lg">Data Blog</h2>
-            <form action="{{ route('galleries.update', $gallery->id) }}" method="POST" id="blog-form" class="my-4 flex flex-col"
+            <h2 class="text-lg">Data Gallery</h2>
+            <form action="{{ route('galleries.update', $gallery->id) }}" method="POST" id="gallery-form" class="my-4 flex flex-col"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -84,7 +84,7 @@
         var editor = new FroalaEditor('#froala');
 
         let btnUpdated = document.querySelector('#btn-update');
-        let blogForm = document.querySelector('#blog-form');
+        let galleryForm = document.querySelector('#gallery-form');
 
         // Preview image function
         function previewImage(event) {
@@ -117,9 +117,9 @@
             descriptionInput.type = 'hidden';
             descriptionInput.name = 'description';
             descriptionInput.value = editor.html.get();
-            blogForm.appendChild(descriptionInput);
+            galleryForm.appendChild(descriptionInput);
 
-            blogForm.submit();
+            galleryForm.submit();
         });
     </script>
 @endsection

@@ -16,7 +16,7 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="py-1 menu-inner">
- 
+
         {{-- Admin --}}
         <li class="menu-item {{ request()->is('home') ? 'active' : '' }}">
             <a href="{{ route('home.index') }}" class="menu-link">
@@ -90,7 +90,27 @@
                 </ul>
             </li>
 
-            <li class="menu-header small text-uppercase">
+            <li class="menu-item {{ request()->is('testimonials*') ? 'open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-briefcase-alt"></i>
+                    <div data-i18n="Kelola Pengguna">Testimoni</div>
+                </a>
+
+                <ul class="menu-sub">
+                    <li class="menu-item {{ request()->is('testimonials') ? 'active' : '' }}">
+                        <a href="{{ route('testimonials.index') }}" class="menu-link">
+                            <div data-i18n="Pengguna">Daftar Testimoni</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ request()->is('testimonials/create') ? 'active' : '' }}">
+                        <a href="{{ route('testimonials.create') }}" class="menu-link">
+                            <div data-i18n="Pengguna">Tambah Testimoni</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            {{-- <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Manajemen Sistem</span>
             </li>
 
@@ -107,7 +127,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
         @endrole
     </ul>
 </aside>

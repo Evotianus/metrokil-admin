@@ -20,7 +20,7 @@ export default {
                 borderColor: "A9A9A9",
                 secondary: "#8FA6FF",
                 secondarySubtle: "#7594FB",
-
+                dying: "#EBEBEB",
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],

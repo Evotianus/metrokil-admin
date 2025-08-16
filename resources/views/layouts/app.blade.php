@@ -36,6 +36,7 @@
 
     {{-- Vendor CSS --}}
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
+    
 
     {{-- Page CSS --}}
     @stack('css')
@@ -102,6 +103,8 @@
 
     {{-- Main JS --}}
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
     {{-- Page JS --}}Add commentMore actions
     @stack('js')

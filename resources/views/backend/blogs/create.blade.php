@@ -17,7 +17,7 @@
             </div>
             <div class="flex gap-3 h-fit">
                 <a href="{{ route('blogs.index') }}" class="btn bg-primary-subtle text-primary">Batal</a>
-                <x-primary-button id="btn-submit">Tambah Blog</x-primary-button>
+                <x-primary-button id="btn-submit">Tambahkan</x-primary-button>
             </div>
         </div>
 

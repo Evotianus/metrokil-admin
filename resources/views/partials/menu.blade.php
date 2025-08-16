@@ -52,19 +52,19 @@
 
             <li class="menu-item {{ request()->is('galleries*') ? 'open' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-film"></i>
-                    <div data-i18n="Kelola Pengguna">Gallery</div>
+                    <i class="menu-icon tf-icons bx bx-photo-album"></i>
+                    <div data-i18n="Kelola Pengguna">Galeri</div>
                 </a>
 
                 <ul class="menu-sub">
                     <li class="menu-item {{ request()->is('galleries') ? 'active' : '' }}">
                         <a href="{{ route('galleries.index') }}" class="menu-link">
-                            <div data-i18n="Pengguna">Daftar Gallery</div>
+                            <div data-i18n="Pengguna">Daftar Galeri</div>
                         </a>
                     </li>
                     <li class="menu-item {{ request()->is('galleries/create') ? 'active' : '' }}">
                         <a href="{{ route('galleries.create') }}" class="menu-link">
-                            <div data-i18n="Pengguna">Tambah Gallery</div>
+                            <div data-i18n="Pengguna">Tambah Galeri</div>
                         </a>
                     </li>
                 </ul>
@@ -73,18 +73,18 @@
             <li class="menu-item {{ request()->is('services*') ? 'open' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-briefcase-alt"></i>
-                    <div data-i18n="Kelola Pengguna">Services</div>
+                    <div data-i18n="Kelola Pengguna">Layanan</div>
                 </a>
 
                 <ul class="menu-sub">
                     <li class="menu-item {{ request()->is('services') ? 'active' : '' }}">
                         <a href="{{ route('services.index') }}" class="menu-link">
-                            <div data-i18n="Pengguna">Daftar Services</div>
+                            <div data-i18n="Pengguna">Daftar Layanan</div>
                         </a>
                     </li>
                     <li class="menu-item {{ request()->is('services/create') ? 'active' : '' }}">
                         <a href="{{ route('services.create') }}" class="menu-link">
-                            <div data-i18n="Pengguna">Tambah Services</div>
+                            <div data-i18n="Pengguna">Tambah Layanan</div>
                         </a>
                     </li>
                 </ul>
@@ -92,7 +92,7 @@
 
             <li class="menu-item {{ request()->is('testimonials*') ? 'open' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-briefcase-alt"></i>
+                    <i class="menu-icon tf-icons bx bx-chat"></i>
                     <div data-i18n="Kelola Pengguna">Testimoni</div>
                 </a>
 

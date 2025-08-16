@@ -6,17 +6,17 @@
 
         <div class="mb-3 flex justify-between items-center">
             <div class="flex flex-col">
-                <h2 class="text-2xl">Tambah Layanan</h2>
-                <p class="mt-2 text-lg">Buat Layanan Metrokil</p>
+                <h2 class="text-2xl">Layanan</h2>
+                {{-- <p class="mt-2 text-lg">Buat Layanan Metrokil</p> --}}
             </div>
             <div class="flex gap-3 h-fit">
                 <a href="{{ route('services.index') }}" class="btn bg-primary-subtle text-primary">Batal</a>
-                <x-primary-button id="btn-submit">Tambah Layanan</x-primary-button>
+                <x-primary-button id="btn-submit">Tambahkan</x-primary-button>
             </div>
         </div>
 
         <div class="card bg-white py-4 px-7">
-            <h2 class="text-lg">Data Layanan</h2>
+            <h2 class="text-lg">Tambah Layanan</h2>
             <form action="/services" method="POST" id="blog-form" class="my-4 flex flex-col" enctype="multipart/form-data">
                 @csrf
                 @method('POST')

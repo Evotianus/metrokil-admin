@@ -2,26 +2,27 @@
 
 @section('title', 'Tambah Gallery')
 <link href='https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css' rel='stylesheet'
-        type='text/css' />
-    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'>
+    type='text/css' />
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'>
 </script>
 @section('content')
     <div class="container-xxl container-p-y">
 
         <div class="mb-3 flex justify-between items-center">
             <div class="flex flex-col">
-                <h2 class="text-2xl">Tambah Foto</h2>
-                <p class="mt-2 text-lg">Buat Gallery untuk website Metrokil</p>
+                <h2 class="text-2xl">Galeri</h2>
+                {{-- <p class="mt-2 text-lg">Buat Gallery untuk website Metrokil</p> --}}
             </div>
             <div class="flex gap-3 h-fit">
                 <a href="{{ route('galleries.index') }}" class="btn bg-primary-subtle text-primary">Batal</a>
-                <x-primary-button id="btn-submit">Tambah Foto</x-primary-button>
+                <x-primary-button id="btn-submit">Tambahkan</x-primary-button>
             </div>
         </div>
 
         <div class="card bg-white py-4 px-7">
-            <h2 class="text-lg">Data Gallery</h2>
-            <form action="/galleries" method="POST" id="blog-form" class="my-4 flex flex-col" enctype="multipart/form-data">
+            <h2 class="text-lg">Tambah Galeri</h2>
+            <form action="/galleries" method="POST" id="blog-form" class="my-4 flex flex-col"
+                enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div class="grid grid-cols-6 gap-3">
@@ -39,14 +40,22 @@
                             <select name="category" id="category"
                                 class="input-text border-slate-400 rounded-md placeholder:opacity-60 focus:ring-primary">
                                 <option value="" disabled selected>-- Pilih Kategori --</option>
-                                <option value="Penyuntikan Anti Rayap Kusen Jendela">Penyuntikan Anti Rayap Kusen Jendela</option>
-                                <option value="Penyuntikan Anti Rayap Kusen Pintu">Penyuntikan Anti Rayap Kusen Pintu</option>
-                                <option value="Penyuntikan Anti Rayap Dinding Keramik Kamar Mandi">Penyuntikan Anti Rayap Dinding Keramik Kamar Mandi</option>
-                                <option value="Penyuntikan Anti Rayap Lantai Dasar">Penyuntikan Anti Rayap Lantai Dasar</option>
-                                <option value="Lubang Penyuntikan Anti Rayap Sebelum Ditambal">Lubang Penyuntikan Anti Rayap Sebelum Ditambal</option>
-                                <option value="Lubang Penyuntikan Anti Rayap Setelah Ditambal">Lubang Penyuntikan Anti Rayap Setelah Ditambal</option>
-                                <option value="Penyuntikan Anti Rayap Di Atas Lemari">Penyuntikan Anti Rayap Di Atas Lemari</option>
-                                <option value="Penyemprotan Anti Rayap Plafon Gypsum">Penyemprotan Anti Rayap Plafon Gypsum</option>
+                                <option value="Penyuntikan Anti Rayap Kusen Jendela">Penyuntikan Anti Rayap Kusen Jendela
+                                </option>
+                                <option value="Penyuntikan Anti Rayap Kusen Pintu">Penyuntikan Anti Rayap Kusen Pintu
+                                </option>
+                                <option value="Penyuntikan Anti Rayap Dinding Keramik Kamar Mandi">Penyuntikan Anti Rayap
+                                    Dinding Keramik Kamar Mandi</option>
+                                <option value="Penyuntikan Anti Rayap Lantai Dasar">Penyuntikan Anti Rayap Lantai Dasar
+                                </option>
+                                <option value="Lubang Penyuntikan Anti Rayap Sebelum Ditambal">Lubang Penyuntikan Anti Rayap
+                                    Sebelum Ditambal</option>
+                                <option value="Lubang Penyuntikan Anti Rayap Setelah Ditambal">Lubang Penyuntikan Anti Rayap
+                                    Setelah Ditambal</option>
+                                <option value="Penyuntikan Anti Rayap Di Atas Lemari">Penyuntikan Anti Rayap Di Atas Lemari
+                                </option>
+                                <option value="Penyemprotan Anti Rayap Plafon Gypsum">Penyemprotan Anti Rayap Plafon Gypsum
+                                </option>
                             </select>
                         </div>
                     </div>

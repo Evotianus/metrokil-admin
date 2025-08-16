@@ -17,6 +17,10 @@ export default {
                 warningSubtle: "#FFEECC",
                 danger: "#ff3e1d",
                 dangerSubtle: "#FFD8D2",
+                borderColor: "A9A9A9",
+                secondary: "#8FA6FF",
+                secondarySubtle: "#7594FB",
+
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],

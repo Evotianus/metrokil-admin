@@ -18,7 +18,7 @@
         </div>
 
         <div class="card bg-white py-4 px-7">
-            <h2 class="text-lg">Data Blog</h2>
+            <h2 class="text-lg">Data Gallery</h2>
             <form action="{{ route('galleries.update', $gallery->id) }}" method="POST" id="blog-form" class="my-4 flex flex-col"
                 enctype="multipart/form-data">
                 @csrf

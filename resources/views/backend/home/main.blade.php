@@ -10,7 +10,7 @@
         <article class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             
             <!-- 4 Cards -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-2 gap-4">
                 <div class="card bg-white border-b-primary border-2">
                     <div class="card-body">
                         <div class="flex items-center gap-3 w-fit">
@@ -44,7 +44,7 @@
                         <p class="mt-2">Total Layanan</p>
                     </div>
                 </div>
-                <div class="card bg-white border-b-secondary border-b-2">
+                <d class="card bg-white border-b-secondary border-b-2">
                     <div class="card-body">
                         <div class="flex items-center gap-3 w-fit">
                             <div class="icon bg-secondary-subtle w-fit p-2 rounded-md">
@@ -54,41 +54,38 @@
                         </div>
                         <p class="mt-2">Total Gallery</p>
                     </div>
-                </div>
+                </d iv>
             </div>
 
             <!-- Aside Pie Chart -->
             <aside class="pl-0 lg:pl-4">
-                <div class="card bg-white border-borderColor border-2 h-full">
-                    <div class="card-body">
+                <section class="card bg-white border-borderColor border-2 h-full">
+                    <main class="card-body">
                         <div class="w-full">
                             <h3 class="text-2xl mb-4">Metrokil Reviews</h3>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 items-center gap-4">
-                                <!-- Chart -->
-                                <div class="w-40 h-40 mx-auto relative">
-                                    <canvas id="reviewsChart"></canvas>
+                                <div class="grid grid-cols-1 lg:grid-cols-2 lg:mt-12 items-center gap-4">
+                                    <!-- Chart -->
+                                    <div class="flex justify-center align-items-center">
+                                        <div class="w-40 h-40 lg:w-50 lg:h-50 xl:w-60 xl:h-60">
+                                            <canvas id="reviewsChart"></canvas>
+                                        </div>
+                                    </div>
+                                    <!-- Legend -->
+                                    <aside class="flex flex-col gap-2 sm:pl-2">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-4 h-4 rounded-full bg-[#278CFF]"></span>
+                                            <p>Berita ({{ $beritaCount }})</p>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-4 h-4 rounded-full bg-[#41FF80]"></span>
+                                            <p>Informasi ({{ $informasiCount }})</p>
+                                        </div>
+                                    </aside>
                                 </div>
-                                <!-- Legend -->
-                                <div class="flex flex-col gap-2 sm:pl-2">
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-4 h-4 rounded-full bg-blue-500"></span>
-                                        <p>Positif</p>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-4 h-4 rounded-full bg-yellow-400"></span>
-                                        <p>Netral</p>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <span class="w-4 h-4 rounded-full bg-red-500"></span>
-                                        <p>Negatif</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                    </div>
-                </div>
+                    </main>
+                </section>
             </aside>
-
         </article>
 
         <!-- Bagian Blog Table -->
@@ -175,24 +172,23 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const ctx = document.getElementById('reviewsChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Positif', 'Netral', 'Negatif'],
-            datasets: [{
-                data: [45, 30, 25],
-                backgroundColor: ['#3B82F6', '#FACC15', '#EF4444'],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } }
-        }
+    document.addEventListener("DOMContentLoaded", function() {
+        const ctx = document.getElementById('reviewsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Berita', 'Informasi'],
+                datasets: [{
+                    data: [{{ $beritaCount }}, {{ $informasiCount }}],
+                    backgroundColor: ['#41FF80', '#278CFF'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+            }
+        });
     });
-});
 </script>
 @endsection

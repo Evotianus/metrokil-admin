@@ -37,13 +37,18 @@ class HomeController extends Controller
         $blogs = $query->orderBy('created_at', 'desc')->get();
         $blogs = Blog::paginate(3);
 
+        $beritaCount = Blog::where('category', 'news')->count();
+        $informasiCount = Blog::where('category', 'information')->count();
+
         // return ke view dengan data
         return view('backend.home.main', compact(
             'galleryCount',
             'serviceCount',
             'blogCount',
             'testimonialCount',
-            'blogs'
+            'blogs',
+            'beritaCount',
+            'informasiCount'
         ));
     }
 }

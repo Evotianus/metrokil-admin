@@ -57,7 +57,7 @@
                         <label for="title">Description</label>
                         <input type="text" name="description" id="description"
                             class="input-text border-slate-400 rounded-md placeholder:opacity-60 focus:ring-primary"
-                            placeholder="Deskripsi Layanan...">
+                            placeholder="Deskripsi Layanan..." value="{{ old('description', $service->description) }}">
                     </div>
                 </div>
             </form>

@@ -39,6 +39,12 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::resource('services',\App\Http\Controllers\ServiceController::class);
         Route::resource('testimonials',\App\Http\Controllers\TestimonialController::class);
     });
+
+    Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {
+        // Route::get('/', [\App\Http\Controllers\SettingsController::class, 'index'])->name('index');
+        Route::get('change-password', [\App\Http\Controllers\UserController::class, 'changePassword'])->name('change-password');
+        Route::post('change-password', [\App\Http\Controllers\UserController::class, 'updatePassword'])->name('change-password.update');
+    });
 });
 
 require __DIR__ . '/auth.php';

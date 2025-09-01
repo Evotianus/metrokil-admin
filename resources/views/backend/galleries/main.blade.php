@@ -37,8 +37,8 @@
                         @foreach ($galleries as $gallery)
                             <tr>
                                 <td><strong>{{ \Str::limit($gallery->name, 15) ?? 'None' }}</strong></td>
-                                <td><img src="{{ asset('storage/app/public/' . $gallery->image_url) }}" alt=""
-                                        class="w-48"></td>
+                                <td><img src="{{ asset('storage/' . $gallery->image_url) }}" alt="" class="w-48">
+                                </td>
                                 <td>{{ substr(strip_tags($gallery->description), 0, 60) }}</td>
                                 <td>
                                     <span

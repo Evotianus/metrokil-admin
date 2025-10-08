@@ -23,7 +23,7 @@
                 <div class="col-span-4">
                     <div class="flex flex-col gap-2">
                         <label for="title">Password Saat Ini</label>
-                        <input type="text" name="current_password" id="current_password"
+                        <input type="password" name="current_password" id="current_password"
                             class="input-text border-slate-400 rounded-md placeholder:opacity-60 focus:ring-primary"
                             placeholder="Password saat ini...">
                     </div>

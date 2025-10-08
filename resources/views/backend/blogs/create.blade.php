@@ -41,8 +41,9 @@
                             <select name="category" id="category"
                                 class="input-text border-slate-400 rounded-md placeholder:opacity-60 focus:ring-primary">
                                 <option value="" disabled selected>-- Pilih Kategori --</option>
-                                <option value="news">Berita</option>
-                                <option value="information">Informasi</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

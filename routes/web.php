@@ -38,6 +38,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::resource('galleries',\App\Http\Controllers\GalleryController::class);
         Route::resource('services',\App\Http\Controllers\ServiceController::class);
         Route::resource('testimonials',\App\Http\Controllers\TestimonialController::class);
+        Route::resource('categories',\App\Http\Controllers\CategoryController::class);
     });
 
     Route::group(['prefix' => 'settings', 'as' => 'settings.'], function () {

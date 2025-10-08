@@ -110,6 +110,26 @@
                 </ul>
             </li>
 
+            <li class="menu-item {{ request()->is('categories*') ? 'open' : '' }}">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-category"></i>
+                    <div data-i18n="Kelola Pengguna">Kategori</div>
+                </a>
+
+                <ul class="menu-sub">
+                    <li class="menu-item {{ request()->is('categories') ? 'active' : '' }}">
+                        <a href="{{ route('categories.index') }}" class="menu-link">
+                            <div data-i18n="Pengguna">Daftar Kategori</div>
+                        </a>
+                    </li>
+                    <li class="menu-item {{ request()->is('categories/create') ? 'active' : '' }}">
+                        <a href="{{ route('categories.create') }}" class="menu-link">
+                            <div data-i18n="Pengguna">Tambah Kategori</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li class="menu-header small text-uppercase">
                 <span class="menu-header-text">Manajemen Sistem</span>
             </li>

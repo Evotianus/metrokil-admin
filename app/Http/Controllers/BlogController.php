@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -23,6 +24,8 @@ class BlogController extends Controller
                 ->orWhere('description', 'LIKE', "%{$search}%")
                 ->orWhereHas('user', function ($userQuery) use ($search) {
                     $userQuery->where('name', 'LIKE', "%{$search}%");
+                })->orWhereHas('category', function ($categoryQuery) use ($search) {
+                    $categoryQuery->where('name', 'LIKE', "%{$search}%");
                 });
         }
 
@@ -36,7 +39,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('backend.blogs.create');
+        $categories = Category::all();
+
+        return view('backend.blogs.create', compact('categories'));
     }
 
     /**
